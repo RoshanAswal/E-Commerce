@@ -13,6 +13,9 @@
     width:80%;
     height:90%;
 }
+.product-img-div img:hover{
+    cursor: pointer;
+}
 
 .ProductCard:hover{
     box-shadow:5px 5px 10px 2px rgb(0,0,0,0.5);

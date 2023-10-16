@@ -1,0 +1,147 @@
+/* font-family: 'Merriweather', serif;
+font-family: 'Roboto', sans-serif;
+font-family: 'Signika Negative', sans-serif; */
+body{
+    background-color: #33d35b;
+}
+
+/*--------- Header-section --------*/
+.header-section > h1{
+    margin:40px 100px 0 100px;
+    text-align: left !important;
+    background-color: #33d35b;
+    color:white;
+}
+
+
+/*--------- Profile-section----------*/
+.profile-section{
+    height:fit-content;
+    margin:30px 100px 0 100px;
+
+    box-shadow: -3px -2px 10px rgb(77, 72, 72,0.5);
+
+    display: grid;
+    grid-template-columns: 15% 85%;
+
+    position: relative;
+}
+
+.edit-btn{
+    position: absolute;
+    right:10px;
+    top:10px;
+
+}
+.edit-btn > img{
+    box-shadow: none;
+    width:30px;height:30px;
+}
+
+/*------ Menu section ------*/
+.profile-section > .profile-menu-section{
+    background-color: #33d35b;
+
+    display: flex;
+    flex-direction: column;
+}
+.profile-menu-section > div{
+    display:flex;
+    padding:15px;
+    width:100%;
+}
+.profile-menu-section > div > h4{
+    color:rgb(245, 239, 239);
+    font-family: 'Signika Negative', sans-serif;
+}
+.profile-menu-section > div:hover{
+    box-shadow: -3px -2px 10px rgb(77, 72, 72,0.5); ;
+    cursor: pointer;
+}
+.profile-menu-section >div>img{
+    box-shadow: none;
+    max-height:20px;
+    margin-right:10px;
+}
+
+/* --------- Profile info section ------- */
+
+.profile-detail-section{
+    background-color: white;
+    padding:50px 300px 50px 20px;
+}
+
+.profile-detail-section > hr{
+    margin-top:40px;
+}
+
+.profile-img > img{
+    box-shadow: none;
+    border-radius: 40%;
+    width:250px;
+    height:200px;
+}
+.personal-info-section{
+    display: flex;
+}
+.general-info{
+    width:100%;
+    margin:auto 0px auto 30px;
+}
+.general-info > hr{
+    width:100%;
+}
+.general-info > h4{
+    font-family: 'Roboto', sans-serif;
+    text-align: left !important;
+    margin:7px 0;
+    font-size:15px;
+}
+.general-info > h4 > span{
+    margin-right:50px;
+    font-weight: bold;
+    font-size: 20px;
+}
+/*--------- Address section ------------*/
+.address-section{
+    margin-top:40px;
+}
+.address-section > h2{
+    text-align: left;
+    margin-top:20px;
+    font-size:18px;
+    font-family: 'Roboto', sans-serif;
+}
+.address-header > h1{
+    text-align: left;
+    margin-bottom:30px;
+}
+
+.first-address{
+    background-color: rgb(238, 229, 229);
+    margin-top:20px;
+    padding:10px 30px 30px 30px;      
+    line-height: 25px;
+}
+.first-address > h2{
+    font-family: 'Roboto', sans-serif;
+    font-size:15px;
+    text-align: left;
+}
+
+/*----------- Payment-section -----------*/
+.Payment-section{
+    margin-top:30px;
+}
+.Payment-section > div> h2{
+    text-align: left;
+}
+.Payment-section > div> h3{
+    text-align: left;
+    margin-top:20px;
+}
+.Payment-section > div > h3 > span{
+    margin-left:30px;
+    font-family: 'Roboto', sans-serif;
+    font-size:15px;
+}

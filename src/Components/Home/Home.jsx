@@ -13,9 +13,11 @@ import AnimeTshirt8 from '../../images/animeImage8.png';
 import AnimeTshirt9 from '../../images/animeImage9.png';
 import AnimeTshirt10 from '../../images/animeImage10.png';
 import AnimeTshirt11 from '../../images/animeImage11.png';
+import { useSelector } from 'react-redux';
 
 const Home = () => {
   const [arr,setArr]=useState([]);
+  const isLoggedIn=useSelector(state=>state.loggedIn);
   useEffect(()=>{
     setArr([AkatsukiImg,AnimeTshirt1,AnimeTshirt2,AnimeTshirt3,
       AnimeTshirt4,AnimeTshirt5,AnimeTshirt6,AnimeTshirt7,AnimeTshirt8,
@@ -23,7 +25,7 @@ const Home = () => {
   },[]);
   return (
     <div className='Home'>
-      <h1>Products</h1>
+      <h1>Products {isLoggedIn}</h1>
       <div className='ProductCards'>
         {
           arr.map((image)=>(

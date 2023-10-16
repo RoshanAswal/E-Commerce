@@ -5,15 +5,19 @@ import search from '../../images/search.png';
 import setting from '../../images/settings.png'
 import profile from '../../images/profile-user.png'
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { LoginAction, LogoutAction } from '../../ReduxContainer/ActionCreator';
 // import SignupPage from '../../pages/SignupPage/SignupPage';
 
 const Sidebar = () => {
     const [price,setPrice]=useState(0);
+    const isLoggedIn=useSelector(state=>state.loggedIn);
+    const dispatch=useDispatch();
   return (
     <div className='Sidebar'>
         <div className='Logo-div'>
             <img src={women} alt='women'></img>
-            <h2>E-Mart</h2>
+            <h2><span style={{color:'#FF0800'}}>E</span>-<span style={{color:'black'}}>Mart</span></h2>
         </div>
         <div className='Filter-div'>
             <div className='Search-div'>
@@ -35,7 +39,7 @@ const Sidebar = () => {
             </div>
             <div className='Range-div'>
                 <div className='price-tag'>
-                    <h4>{price}₹</h4>
+                    <h3>{"< "}{price}₹</h3>
                 </div>
                 <input type='range' min="100" max="10000" onInput={e=>{setPrice(e.target.value)}}/>
             </div>
@@ -57,15 +61,20 @@ const Sidebar = () => {
                 </select>
             </div>
         </div>
+
         <div className='Menu-div'>
-            <div className='options-div'>
-                <Link to="/signup">
-                <img id='profile' src={profile} alt='profile'></img>
-                </Link>
-                <img id='setting' src={setting} alt='setting'></img>
-            </div>
-            <div className='credential-div'>
-                <h3>Developed by Roshan Aswal</h3>
+            <div id='Menu-options'>
+                <div className='options-div'>
+                    <Link to={isLoggedIn==='True'?"/profile":"/signup"}>
+                    <img id='profile' src={profile} alt='profile'></img>
+                    </Link>
+                    <img id='setting' src={setting} 
+                        onClick={()=>{isLoggedIn==='True'?dispatch(LogoutAction()):dispatch(LoginAction())}}
+                    alt='setting'></img>
+                </div>
+                <div className='credential-div'>
+                    <h3>Developed by Roshan Aswal</h3>
+                </div>
             </div>
         </div>
     </div>
