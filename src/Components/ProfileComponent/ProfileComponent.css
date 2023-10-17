@@ -1,0 +1,79 @@
+.profile-detail-section{
+    background-color: white;
+    padding:50px 300px 50px 20px;
+}
+
+.profile-detail-section > hr{
+    margin-top:40px;
+}
+
+.profile-img > img{
+    box-shadow: none;
+    border-radius: 40%;
+    width:250px;
+    height:200px;
+}
+.personal-info-section{
+    display: flex;
+}
+.general-info{
+    width:100%;
+    margin:auto 0px auto 30px;
+}
+.general-info > hr{
+    width:100%;
+}
+.general-info > h4{
+    font-family: 'Roboto', sans-serif;
+    text-align: left !important;
+    margin:7px 0;
+    font-size:15px;
+}
+.general-info > h4 > span{
+    margin-right:50px;
+    font-weight: bold;
+    font-size: 20px;
+}
+/*--------- Address section ------------*/
+.address-section{
+    margin-top:40px;
+}
+.address-section > h2{
+    text-align: left;
+    margin-top:20px;
+    font-size:18px;
+    font-family: 'Roboto', sans-serif;
+}
+.address-header > h1{
+    text-align: left;
+    margin-bottom:30px;
+}
+
+.first-address{
+    background-color: rgb(238, 229, 229);
+    margin-top:20px;
+    padding:10px 30px 30px 30px;      
+    line-height: 25px;
+}
+.first-address > h2{
+    font-family: 'Roboto', sans-serif;
+    font-size:15px;
+    text-align: left;
+}
+
+/*----------- Payment-section -----------*/
+.Payment-section{
+    margin-top:30px;
+}
+.Payment-section > div> h2{
+    text-align: left;
+}
+.Payment-section > div> h3{
+    text-align: left;
+    margin-top:20px;
+}
+.Payment-section > div > h3 > span{
+    margin-left:30px;
+    font-family: 'Roboto', sans-serif;
+    font-size:15px;
+}
