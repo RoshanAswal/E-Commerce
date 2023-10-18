@@ -25,15 +25,17 @@ const ProfilePage = () => {
         <h1>Profile Page</h1>
       </div>
       <div className="profile-section">
-        <div className="edit-btn">
-          <img src={edit} alt="edit-btn"/>
-          <span>Edit</span>  
-        </div>
+        {choosen==='gen'?
+                <div className="edit-btn">
+                <img src={edit} alt="edit-btn"/>
+                <span>Edit</span>  
+              </div>
+        :""
+        }
         <div className="profile-menu-section">
           <div className={choosen==='gen'?'choosen':""}
               onClick={()=>{setChoosen('gen')}}>
-            <img src={genImg} alt="gen">
-            </img>
+            <img src={genImg} alt="gen" />
             <h4>General</h4>
           </div>
           <div className={choosen==='liked'?'choosen':""}

@@ -1,0 +1,129 @@
+.liked-component{
+    background-color: white;
+    padding:50px 20px 40px 20px;
+}
+
+/*-------- Header section --------*/
+.liked-header{
+    display:flex;
+}
+.liked-header h2{
+    text-align: left;
+    font-size:40px;
+}
+.liked-header img{
+    box-shadow: none;
+    width:40px;height:40px;
+    margin-left:10px;
+}
+
+/*------------- Column item section ------------------*/
+.cart-details{
+    text-align: left;
+    margin-top:20px;
+}
+.cart-details hr{
+    margin:20px 0;
+}
+.column-items{
+    display: grid;
+    grid-template-columns: 50% 25% 25%;
+}
+.col1 h3{
+    text-align: left;
+    font-family: 'Merriweather', serif;
+    font-weight: 100;
+}
+.col2 h3,.col3 h3{
+    text-align: center;
+    font-family: 'Merriweather', serif;
+    font-weight: 100;
+}
+/*------------------ Item section ----------------------*/
+.items-section{
+    display: grid;
+}
+.item{
+    display: grid;
+    grid-template-columns: 50% 25% 25%;
+    row-gap: 20px;
+
+    margin-top:30px;
+}
+.item-des{
+    display: flex;
+}
+.item-des .img-div{
+    border:2px solid grey;
+    padding:20px;
+}
+.img-div{
+    position:relative;
+}
+.img-div #del{
+    width:20px;height:20px;
+    position:absolute;
+    right:5px;top:5px;
+    opacity: 0.7;
+}
+.img-div #del:hover{
+    cursor: pointer;
+    opacity: 1;
+}
+
+.img-div img{
+    box-shadow: none;
+    width:150px;height:150px;
+}
+.item .item-detail{
+    margin-left:30px;
+}
+.item-detail h3{
+    font-family: 'Merriweather', serif;
+    font-weight: 100;
+}
+
+/*--- price and amount -------*/
+.item-amount div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.item-amount div img{
+    box-shadow: none;
+    width:30px;height:30px;
+}
+.item-amount div img:hover{
+    cursor: pointer;
+}
+.item-amount div button{
+    width:40px;height:40px;
+    margin:0 10px;
+    font-size:20px;
+    background-color: white;
+    color:black;
+    border-radius: 0;
+}
+.item-price h3{
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:600;
+}
+
+/*---------- Checkout section ---------------*/
+.checkout-section{
+    margin-top:30px;
+    text-align: right;
+}
+
+.checkout-section .checkout-btn{
+    border:none;
+    font-size: 20px;
+    border-radius: 0;
+    width:150px;height:40px;
+    background-color: #33d35b;
+}
+.checkout-section .checkout-btn:hover{
+    color:yellow;
+    cursor: pointer;
+}
