@@ -1,0 +1,10 @@
+.HistoryComponent{
+    background-color: white;
+}
+.historyHeader h2{
+    font-size:40px;
+    margin-top:30px;
+}
+.HistoryComponent hr{
+    margin:30px 0 0 30px;
+}
