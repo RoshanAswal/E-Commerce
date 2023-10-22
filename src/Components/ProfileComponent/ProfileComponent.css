@@ -34,11 +34,26 @@
     font-weight: bold;
     font-size: 20px;
 }
+.general-info input{
+    box-shadow: none;
+    border-radius: 0;
+    
+    background-color: white;
+    border-bottom:2px solid black;
+    padding:0;
+    
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+.general-info input:focus{
+    outline: none;
+}
 /*--------- Address section ------------*/
 .address-section{
     margin-top:40px;
 }
-.address-section > h2{
+.address-section > div > h2{
     text-align: left;
     margin-top:20px;
     font-size:18px;
@@ -49,7 +64,7 @@
     margin-bottom:30px;
 }
 
-.first-address{
+.first-address,#input-address{
     background-color: rgb(238, 229, 229);
     margin-top:20px;
     padding:10px 30px 30px 30px;      
@@ -59,6 +74,27 @@
     font-family: 'Roboto', sans-serif;
     font-size:15px;
     text-align: left;
+}
+
+#input-address{
+    display: flex;
+    flex-direction: column;
+}
+#input-address input{
+    margin-top:10px;
+    box-shadow: none;
+    border-radius: 0;
+    
+    background-color: rgb(238, 229, 229);
+    border-bottom:2px solid black;
+    padding:0;
+    
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+#input-address input:focus{
+    outline: none;
 }
 
 /*----------- Payment-section -----------*/
@@ -76,4 +112,38 @@
     margin-left:30px;
     font-family: 'Roboto', sans-serif;
     font-size:15px;
+}
+.Payment-section > div > h3 > input{
+    margin-left:20px;
+    box-shadow: none;
+    border-radius: 0;
+    
+    background-color: white;
+    border-bottom:2px solid black;
+    padding:0;
+    
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+.Payment-section > div > h3 > input:focus{
+    outline: none;
+}
+
+/*-------------- Update button -----------*/
+.update-btn{
+    display: flex;
+}
+.update-btn > button{
+    border:none;
+    font-size: 20px;
+    border-radius: 0;
+    width:150px;height:40px;
+    background-color: #33d35b;
+    
+    margin:70px 0 50px 0;
+}
+.update-btn > button:hover{
+    color:yellow;
+    cursor: pointer;
 }

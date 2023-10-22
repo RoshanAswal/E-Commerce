@@ -24,6 +24,7 @@
 }
 .productPage button:hover{
     cursor: pointer;
+    color:yellow;
 }
 /*------ Image-section---------*/
 #product-image-div #main-image{

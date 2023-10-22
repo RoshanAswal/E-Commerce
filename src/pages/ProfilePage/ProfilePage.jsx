@@ -12,9 +12,10 @@ import HistoryComponent from '../../Components/HistoryComponent/HistoryComponent
 
 const ProfilePage = () => {
   const [choosen,setChoosen]=useState('gen');
+  const [toedit,setEdit]=useState(false);
 
   const renderSection=()=>{
-    if(choosen==='gen')return <ProfileComponent/>
+    if(choosen==='gen')return <ProfileComponent toedit={toedit}/>
     if(choosen==='liked')return <LikedComponent/>
     if(choosen==='his')return <HistoryComponent/>
   }
@@ -27,7 +28,7 @@ const ProfilePage = () => {
       <div className="profile-section">
         {choosen==='gen'?
                 <div className="edit-btn">
-                <img src={edit} alt="edit-btn"/>
+                <img src={edit} alt="edit-btn" onClick={()=>{setEdit(!toedit)}}/>
                 <span>Edit</span>  
               </div>
         :""
@@ -49,7 +50,10 @@ const ProfilePage = () => {
             <h4>Order History</h4>
           </div>
         </div>
-        {renderSection()}
+        <div className="general-section">
+          {renderSection()}
+        </div>
+
       </div>
     </div>
   )
