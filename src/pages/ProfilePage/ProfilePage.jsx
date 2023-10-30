@@ -13,11 +13,12 @@ import HistoryComponent from '../../Components/HistoryComponent/HistoryComponent
 const ProfilePage = () => {
   const [choosen,setChoosen]=useState('gen');
   const [toedit,setEdit]=useState(false);
+  const userId=window.localStorage.getItem('userId');
 
   const renderSection=()=>{
     if(choosen==='gen')return <ProfileComponent toedit={toedit}/>
-    if(choosen==='liked')return <LikedComponent/>
-    if(choosen==='his')return <HistoryComponent/>
+    if(choosen==='liked' && userId!==null)return <LikedComponent/>
+    if(choosen==='his' && userId!==null)return <HistoryComponent/>
   }
 
   return (

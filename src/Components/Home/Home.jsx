@@ -1,36 +1,77 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useContext } from 'react'
 import './Home.css';
+import axios from 'axios';
 import ProductCard from '../ProductCard/ProductCard';
-import AkatsukiImg from '../../images/AkatsukiTshirtProduct.png';
-import AnimeTshirt1 from '../../images/animeImage1.png';
-import AnimeTshirt2 from '../../images/animeImage2.png';
-import AnimeTshirt3 from '../../images/animeImage3.png';
-import AnimeTshirt4 from '../../images/animeImage4.png';
-import AnimeTshirt5 from '../../images/animeImage5.png';
-import AnimeTshirt6 from '../../images/animeImage6.png'; 
-import AnimeTshirt7 from '../../images/animeImage7.png';
-import AnimeTshirt8 from '../../images/animeImage8.png';
-import AnimeTshirt9 from '../../images/animeImage9.png';
-import AnimeTshirt10 from '../../images/animeImage10.png';
-import AnimeTshirt11 from '../../images/animeImage11.png';
+import { FilterContext } from '../../Context/FilterContext';
+
+import male1 from '../../images/maleModel/model1.avif';
+import male2 from '../../images/maleModel/model2.avif';
+import male3 from '../../images/maleModel/model3.avif';
+import male4 from '../../images/maleModel/model4.avif';
+import male5 from '../../images/maleModel/model5.avif';
+import fmale1 from '../../images/femaleModel/fmodel3.avif';
+import fmale2 from '../../images/femaleModel/fmodel4.avif';
+import fmale3 from '../../images/femaleModel/fmodel5.avif';
+import fmale4 from '../../images/femaleModel/fmodel6.avif';
+import fmale5 from '../../images/femaleModel/fmodel2.avif';
+
+
 import { useSelector } from 'react-redux';
 
 const Home = () => {
-  const [arr,setArr]=useState([]);
+  const [arrM,setArrM]=useState([]);
+  const [arrF,setArrF]=useState([]);
+  const [products,setProducts]=useState([]);
+
+  const {gender,age,price,brand,season}=useContext(FilterContext);
   const isLoggedIn=useSelector(state=>state.loggedIn);
+
+
   useEffect(()=>{
-    setArr([AkatsukiImg,AnimeTshirt1,AnimeTshirt2,AnimeTshirt3,
-      AnimeTshirt4,AnimeTshirt5,AnimeTshirt6,AnimeTshirt7,AnimeTshirt8,
-      AnimeTshirt9,AnimeTshirt10,AnimeTshirt11]);
+
+    const fetchProducts=async ()=>{
+      try{
+        const response=await axios.get("http://localhost:3001/");
+        setProducts(response.data.products);
+      }catch(err){
+        console.log(err);
+      }
+    }
+    fetchProducts();
+  },[]);
+  useEffect(()=>{
+    
+    setArrM([male1,male2,male3,male4,male5,male1,
+            male2,male3,male4,male5,male1,male2,
+            male3,male4,male5]);
+    setArrF([fmale1,fmale2,fmale3,fmale4,fmale5,
+            fmale1,fmale2,fmale3,fmale4,fmale5,
+            fmale1,fmale2,fmale3,fmale4,fmale5])
   },[]);
   return (
     <div className='Home'>
-      <h1>Products {isLoggedIn}</h1>
+      <h1>Products</h1>
       <div className='ProductCards'>
         {
-          arr.map((image)=>(
-            <ProductCard img={image}/>
-          ))
+          products.map((e,key)=>{
+            let ind=Math.floor(Math.random()*arrM.length)
+            return gender==="Men"
+            ?    
+            e.minAge<=age && 
+            (e.productPrice>=0) && 
+            (brand==='All' || e.brand===brand) &&
+            (season==='All' || e.Season===season)?
+            <ProductCard img={arrM[ind%(arrM.length)]} pro={e}/>
+            :""
+            :
+            e.minAge<=age && 
+            (e.productPrice>=0) && 
+            (brand==='All' || e.brand===brand) &&
+            (season==='All' || e.Season===season)?
+            <ProductCard img={arrF[ind%(arrF.length)]} pro={e}/>
+            :""
+          })
+
         }
       </div>
     </div>

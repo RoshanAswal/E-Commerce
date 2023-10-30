@@ -1,18 +1,35 @@
-import React, { useState } from 'react'
+import React, { useEffect, useContext } from 'react';
+import { FilterContext } from '../../Context/FilterContext';
 import './Sidebar.css';
 import women from '../../images/woman.png';
 import search from '../../images/search.png';
-import setting from '../../images/settings.png'
-import profile from '../../images/profile-user.png'
-import { Link } from 'react-router-dom';
+import setting from '../../images/settings.png';
+import profile from '../../images/profile-user.png';
+import { Link,useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 import { useDispatch, useSelector } from 'react-redux';
 import { LoginAction, LogoutAction } from '../../ReduxContainer/ActionCreator';
-// import SignupPage from '../../pages/SignupPage/SignupPage';
 
 const Sidebar = () => {
-    const [price,setPrice]=useState(0);
+    const {price,setPrice,setGender,
+        setAge,setBrand,setSeason}=useContext(FilterContext);
     const isLoggedIn=useSelector(state=>state.loggedIn);
     const dispatch=useDispatch();
+
+    const navigate=useNavigate();
+    const [cookie,setCookie]=useCookies(["access_token"]);
+
+    useEffect(()=>{
+        if(cookie.access_token!==null){
+            dispatch(LoginAction());
+        }
+    },[]);
+
+    const logoutActionFunction=()=>{
+        dispatch(LogoutAction())
+        window.localStorage.removeItem('userId');
+    }
+
   return (
     <div className='Sidebar'>
         <div className='Logo-div'>
@@ -25,39 +42,41 @@ const Sidebar = () => {
                 <img src={search} alt='search'></img>
             </div>
             <div className='Gender-age-div'>
-                <select>
-                    <option value="Men" selected>Men</option>
-                    <option value="Women" >Women</option>
-                    <option value="Kids" >Kids</option>
+                <select onChange={e=>{setGender(e.target.value)}}>
+                    <option value="Men">Men</option>
+                    <option value="Women">Women</option>
                 </select>
-                <select>
-                    <option value="1-10" selected>10-20</option>
-                    <option value="11-20" >20-40</option>
-                    <option value="21-40" >40-60</option>
-                    <option value="41 above" >60-100</option>
+                <select onChange={e=>{setAge(e.target.value)}}>
+                    <option value="20" >20</option>
+                    <option value="40" >40</option>
+                    <option value="50" >50</option>
+                    <option value="70" selected>70</option>
                 </select>
             </div>
             <div className='Range-div'>
                 <div className='price-tag'>
                     <h3>{"< "}{price}₹</h3>
                 </div>
-                <input type='range' min="100" max="10000" onInput={e=>{setPrice(e.target.value)}}/>
+                <input type='range' min="2000" max="10000" onInput={e=>{setPrice(e.target.value)}}/>
             </div>
             <div className='Brands-div'>
                 <h3>Brands</h3>
-                <select>
+                <select onChange={e=>{setBrand(e.target.value)}}>
+                    <option value="All" selected>All</option>
                     <option value="Gucci">Gucci</option>
-                    <option value="Levi">Levi</option>
-                    <option value="H&M">H&M</option>
-                    <option value="All">All</option>
+                    <option value="Nike">Nike</option>
+                    <option value="Puma">Puma</option>
+                    <option value="Adidas">Adidas</option>
+                    <option value="Armani">Armani</option>
+                    <option value="Nautica">Nautica</option>
                 </select>
             </div>
             <div className='Season-div'>
                 <h3>Season</h3>
-                <select>
+                <select onChange={e=>{setSeason(e.target.value)}}>
+                    <option value="All" selected>All</option>
                     <option value="Winter">Winter</option>
                     <option value="Summer">Summer</option>
-                    <option value="all season">All</option>
                 </select>
             </div>
         </div>
@@ -69,7 +88,7 @@ const Sidebar = () => {
                     <img id='profile' src={profile} alt='profile'></img>
                     </Link>
                     <img id='setting' src={setting} 
-                        onClick={()=>{isLoggedIn==='True'?dispatch(LogoutAction()):dispatch(LoginAction())}}
+                        onClick={logoutActionFunction}
                     alt='setting'></img>
                 </div>
                 <div className='credential-div'>

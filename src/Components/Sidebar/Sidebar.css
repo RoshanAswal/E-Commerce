@@ -136,7 +136,6 @@
 }
 .options-div #setting:hover{
     cursor: pointer;
-    transform : rotate(200deg) scale(1.2)
 }
 
 .credential-div h3{

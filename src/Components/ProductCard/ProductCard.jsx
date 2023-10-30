@@ -1,18 +1,26 @@
 import React from 'react'
 import './ProductCard.css';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
-function ProductCard({img}) {
+function ProductCard(props) {
+  const navigate=useNavigate();
+  const handleClick=()=>{
+    navigate(`/productPage/${props.pro._id}`,{
+      state:{
+        img:props.img
+      }
+    });
+  }
+
   return (
     <div className='ProductCard'>
       <div className='product-img-div'>
-        <Link to="/productPage">
-          <img src={img} alt='img' draggable="false"></img>
-        </Link>
+        <img src={props.img} alt='img' draggable="false"
+        onClick={handleClick}></img>
       </div>
       <div className='product-namePrice-div'>
-        <h2>Name</h2>
-        <h3>5000</h3>
+        <h2>{props.pro.productName}</h2>
+        <h3>{props.pro.productPrice}</h3>
       </div>
     </div>
   )

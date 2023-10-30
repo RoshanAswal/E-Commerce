@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import profileImg from '../../images/shikamaru.jpg';
 import './ProfileComponent.css';
+import axios from 'axios';
 
 const ProfileComponent = (props) => {
+  const [user,setUser]=useState();
+  const userId=window.localStorage.getItem('userId');
+
+  useEffect(()=>{
+    const fetchUser=async ()=>{
+      try{
+        const response=await axios.get(`http://localhost:3001/profile/${userId}`);
+        setUser(response.data.user);
+      }catch(err){
+        console.log(err);
+      }
+    }
+    fetchUser();
+  },[]);
 
   return (
     <div className="profile-detail-section">
@@ -23,11 +38,11 @@ const ProfileComponent = (props) => {
         </div>
         :
         <div className="general-info">
-          <h4><span>Name</span>  Roshan Aswal</h4>
+          <h4><span>Name</span>{user?.username?user.username:'N/A'}</h4>
           <hr />
-          <h4><span>Email</span>   aswalroshan2002@gmail.com</h4>
+          <h4><span>Email</span>{user?.email?user.email:'N/A'}</h4>
           <hr />
-          <h4><span>Mobile</span>   +91-999-xxx-xxxx</h4>
+          <h4><span>Mobile</span>{user?.phoneNo?user.phoneNo:'N/A'}</h4>
           <hr />
         </div>
       }
@@ -61,17 +76,30 @@ const ProfileComponent = (props) => {
         <div>
           <h2>Address #1</h2>
           <div className="first-address">
-            <h2>Lorem ipsum dolor sit amet, consectetur</h2>
-            <h2>Donec volutpat orci libero, ac tempor eros</h2>
-            <h2>apien semper, auctor magna ut</h2>
-            <h2>Lorem ipsum 12334, 2342</h2>
+            {user?.address1
+            ?user.address1
+            :  <div>
+                <h2>Lorem ipsum dolor sit amet, consectetur</h2>
+                <h2>Donec volutpat orci libero, ac tempor eros</h2>
+                <h2>apien semper, auctor magna ut</h2>
+                <h2>Lorem ipsum 12334, 2342</h2>
+              </div>
+
+            }
+
           </div>
           <h2>Address #2</h2>
           <div className="first-address">
-            <h2>Lorem ipsum dolor sit amet, consectetur</h2>
-            <h2>Donec volutpat orci libero, ac tempor eros</h2>
-            <h2>apien semper, auctor magna ut</h2>
-            <h2>Lorem ipsum 12334, 2342</h2>
+          {user?.address2
+          ?user.address2
+          :    
+            <div>
+              <h2>Lorem ipsum dolor sit amet, consectetur</h2>
+              <h2>Donec volutpat orci libero, ac tempor eros</h2>
+              <h2>apien semper, auctor magna ut</h2>
+              <h2>Lorem ipsum 12334, 2342</h2>
+            </div>
+            }
           </div>
         </div>
       }
@@ -92,8 +120,8 @@ const ProfileComponent = (props) => {
         </div>
         :
         <div>
-          <h3>UPI ID #1  <span>094820394093</span></h3>
-          <h3>UPI ID #2  <span>094820394093</span></h3>
+          <h3>UPI ID #1  <span>{user?.upiId1?user.upiId1:'N/A'}</span></h3>
+          <h3>UPI ID #2  <span>{user?.upiId2?user.upiId2:'N/A'}</span></h3>
         </div>
       }
     </div>

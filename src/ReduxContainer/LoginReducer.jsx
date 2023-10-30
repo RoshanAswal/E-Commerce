@@ -1,7 +1,9 @@
 import { login } from "./LoginActionTypes";
 import { logout } from "./LoginActionTypes";
+
 const initialState={
-    loggedIn:'False'
+    loggedIn:'False',
+    gender:'M',
 }
 const LoginReducer=(state=initialState,action)=>{
     switch(action.type){
