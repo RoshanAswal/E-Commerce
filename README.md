@@ -24,7 +24,7 @@ Season (t-shirts for different seasons can be filtered)
 
 ### Profile Page
 
-Users can find their details like their contact information also their shipping address in the profile section along with their UPI id
+Users can find their details like their contact information also their shipping address in the profile section along with their UPI ID
 for transactions.
 ![Screenshot 2023-11-01 105857](https://github.com/RoshanAswal/E-Commerce/assets/73030476/722eea00-7aeb-4df6-9ac0-8e1470a7ec79)
 
@@ -54,3 +54,8 @@ All the checkout products from the cart can be seen in the History Component as 
 Also the date and time of purchase and delivery.
 
 ![Screenshot 2023-11-01 110239](https://github.com/RoshanAswal/E-Commerce/assets/73030476/3ce0fcf1-7da6-4109-881c-7e8942908183)
+
+
+### Dummy User
+## username - Roshan
+## Password - Jump
