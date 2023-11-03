@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import "./SignupPage.css";
+
+import styles from './SignupPage.module.css';
 import poster2 from "../../images/girl.png";
 import poster1 from "../../images/naruto.png";
 import axios from "axios";
@@ -56,11 +57,11 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="SignupPage-div">
-      <div className="form-section">
-        <div className="forms">
+    <div className={styles.SignupPageDiv}>
+      <div className={styles.formSection}>
+        <div className={styles.forms}>
           {signIn ? (
-            <form id="form">
+            <form id={styles.form}>
               <h2>Hey there!!</h2>
               <span>A new customer Huh!</span>
               <br></br>
@@ -101,20 +102,20 @@ const SignupPage = () => {
                 }}
               ></input>
 
-              <button className="form-btn" onClick={e=>{registerFunction(e)}}>
+              <button className={styles.formBtn} onClick={e=>{registerFunction(e)}}>
                 Register
               </button>
               <span
                 onClick={(e) => {
                   setSignIn(false);
                 }}
-                className="login-btn"
+                className={styles.loginBtn}
               >
                 Login
               </span>
             </form>
           ) : (
-            <form id="form">
+            <form id={styles.form}>
               <h2>Welcome Back!!</h2>
               <span>Sign in and Enjoy shopping</span>
 
@@ -139,21 +140,21 @@ const SignupPage = () => {
                 }}
               ></input>
 
-              <button className="form-btn" onClick={e=>{loginFunction(e)}}>
+              <button className={styles.formBtn} onClick={e=>{loginFunction(e)}}>
                 Login
               </button>
               <span
                 onClick={(e) => {
                   setSignIn(true);
                 }}
-                className="register-btn"
+                className={styles.registerBtn}
               >
                 Register
               </span>
             </form>
           )}
         </div>
-        <div className="poster-div">
+        <div className={styles.posterDiv}>
           {signIn ? (
             <img src={poster1} alt="Naruto-poster"></img>
           ) : (

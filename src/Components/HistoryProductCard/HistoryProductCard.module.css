@@ -1,104 +1,88 @@
 .products_card{
-    display: flex;
-    justify-content: space-between;
-
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
     box-shadow:3px 3px 6px 1px rgb(0,0,0,0.5);
     margin:30px 50px 0 30px;
-}
-/*------- History Product card ---------*/
-.history_product_card{
-    display: flex;
-    justify-content: space-around;
 
     padding:20px;
 }
 
-/*---------- Image section -----------*/
+img{box-shadow: none;}
 
-.history_product_card img{
-    width:150px;height:150px;
+/*-------------- Image section -----------------*/
+.mainImg{
+    width:80%;max-height:auto;
+    margin:0 auto;
+}
+/*--------------- Description section --------------*/
 
-    box-shadow: none;
+.history_product_description{
+    margin-left: 40px;
 }
 
-/*----------- Description section ----------*/
+/*----------------- First col ---------------*/
+
+
+/*----------------- Second col ---------------*/
 
 .history_img_description{
+    height:100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
-    margin-left:40px;
-}
-.product_date{
-    display: flex;
-}
-.product_date h4{
-    color:rgb(71, 71, 210);
-}
-.product_date img{
-    margin-right:10px;
-    width:20px;height:20px;
-}
-.product_header h3{
-    font-size:20px;
-}
-.product_header h4{
-    margin-top:20px;
-    font-family: 'Montserrat', sans-serif;
-    font-size:15px;
+
+    align-items: flex-start;
 }
 
-/*------------ Button section ---------*/
+.product_date img{
+    width:20px;height:20px;
+}
+
+/*------------------ Other Options -------------*/
+
 .other_option{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
-
-    padding:10px;
+    height:100%;
+}
+.del_btn img{
+    width:20px;height:20px;
+    opacity: 0.8;
 }
 
 .show_detail_btn button{
     border:none;
+    padding:10px;
+    color:white;
+
     font-size: 15px;
-    border-radius: 0;
-    width:100px;height:40px;
-    background-color: #33d35b;
-}
-.show_detail_btn button:hover{
-    cursor: pointer;
-    color:yellow
-}
-.del_btn{
-    width:20px;height:20px;
-
+    width:100%;height:100%; 
 }
 
-.del_btn img{
-    box-shadow: none;
-    opacity: 0.5;
-}
-.del_btn img:hover{
-    cursor: pointer;
-    opacity: 1;
-}
+/*--------------- Media query -------------------*/
 
-/*-----------------Description section --------*/
+@media screen and (max-width:1000px){
+    .products_card{
+        display: flex;  
+        flex-direction: column;
+        gap:50px;
+    }
 
-.detail_description{
-    margin-left:50px;
-}
-.detail_description #Q,.detail_description #A{
-    text-align: left;
-}
-.detail_description #Q{
-    margin-left:20px;
-    width:200px;
-    font-size:15px;
-}
-.detail_description #A{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    font-size: 13px;
+    .history_img_description{
+        height:150px;
+        align-items: center;
+    }
+    .history_product_description{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin:0;
+    }
+    .other_option{
+        width:100%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }

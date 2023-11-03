@@ -1,5 +1,5 @@
 import React, { useEffect, useState,useContext } from 'react'
-import './Home.css';
+import styles from './Home.module.css';
 import axios from 'axios';
 import ProductCard from '../ProductCard/ProductCard';
 import { FilterContext } from '../../Context/FilterContext';
@@ -49,9 +49,9 @@ const Home = () => {
             fmale1,fmale2,fmale3,fmale4,fmale5])
   },[]);
   return (
-    <div className='Home'>
-      <h1>Products</h1>
-      <div className='ProductCards'>
+    <div className={styles.Home}>
+      <h1 className={styles.message}>All your wants and needs of t-shirt is <span style={{color:'red'}}>Here</span></h1>
+      <div className={styles.ProductCards}>
         {
           products.map((e,key)=>{
             let ind=Math.floor(Math.random()*arrM.length)
@@ -74,6 +74,7 @@ const Home = () => {
 
         }
       </div>
+      <h1 className={styles.footer}> Copyright @ 2002</h1>
     </div>
   )
 }

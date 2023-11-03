@@ -1,0 +1,237 @@
+.Sidebar{
+    background-color: #0e4135;
+    position: relative;
+    box-shadow: 5px 0px 12px 5px rgb(39, 37, 37,0.5);
+
+    display: flex;
+    flex-direction: column;
+    gap:60px;
+
+    height:100vh;
+
+    color:#FBD3DE;
+}
+
+/*---------- Logo Section -------------*/
+.LogoDiv{
+    margin-top:30px;
+    display: flex;
+    justify-content: center;
+}
+.LogoDiv img{
+    width:50px;
+    height:50px;
+    box-shadow: none;
+}
+.LogoDiv h2{
+    font-size:40px;
+}
+
+/*-----------Search section------------*/
+.SearchDiv{
+    display: flex;
+    justify-content: center;
+    gap:5px;
+}
+.SearchDiv img{
+    width:20px;
+    height:20px;
+    box-shadow: none;
+    transition:transform 0.2 ease-in-out;
+}
+
+.SearchDiv img:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.SearchDiv input{
+    width:180px;
+    height:25px;
+    position: relative;
+    margin-left:15px;
+    font-size: 18px;
+
+    text-align: left;
+}
+
+/*------------ Gender-age section -----------*/
+.GenderAgeDiv{
+    margin-top:40px;
+    display: flex;
+    gap:40px;
+    justify-content: center;
+}
+.GenderAgeDiv select{
+    height: 30px;
+    width:100px;
+    background-color:rgb(21, 107, 21);
+    color:white;
+    border-radius: 3px;
+    font-size: 15px;
+}
+.GenderAgeDiv select:hover{
+    cursor: pointer;
+}
+/*-------------- Range section ------------*/
+
+.RangeDiv{
+    margin-top:40px;
+}
+.RangeDiv input{
+    accent-color: rgb(13, 77, 13);
+}
+.RangeDiv input:hover{
+    cursor: pointer;
+}
+
+/*----------- Brands & Season section -----------*/
+
+.BrandsDiv,.SeasonDiv{
+    margin-top:40px;
+    padding:5px;
+}
+.BrandsDiv select,.SeasonDiv select{
+    height: 30px;
+    width:100px;
+    background-color:rgb(21, 107, 21);
+    color:white;
+    border-radius: 3px;
+    font-size:15px;
+}
+.BrandsDiv select:hover,.SeasonDiv select:hover{
+    cursor: pointer;
+}
+
+
+/*------------- Menu section ---------------*/
+.MenuDiv{
+    height: 100vh;
+    position:relative;
+}
+#MenuOptions{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+
+    position:absolute;
+    bottom:20px;
+    left:0;right:0;
+}
+.optionsDiv{
+    display: flex;
+    justify-content: center;
+    gap:20px;
+
+}
+.optionsDiv img{
+    height:30px;
+    width: 30px;
+    box-shadow: none;
+    transition: transform 0.3 ease-in-out;
+}
+.optionsDiv #profile:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+.optionsDiv #setting:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.credentialDiv h3{
+    font-size: 15px;
+}
+
+/*---------------  Smaller window ------------*/
+
+.minSidebar{
+    background-color: #0e4135;
+    position:relative;
+    z-index: 2;
+}
+
+.minLogoDiv img{
+    box-shadow: none;
+    width:70px;height:70px;
+}
+.minLogoDiv{
+    z-index: 10;
+}
+
+.minFilter{
+    background-color: #0e4135;
+    position:fixed;
+
+    height:100%;
+    top:0;
+    left:-100%;
+    width:90%;
+    transition: all 0.5s;
+}
+.minFilter1{
+    background-color: #0e4135;
+    position:fixed;
+
+    height:100%;
+    top:0;
+    width:90%;
+}
+.minFilter1 .FilterDiv{
+    margin-top:100px;
+}
+.minFilter1 > .minLogoDiv{
+    top:0;
+}
+
+.arrow{
+    position:relative;
+    top:40%;
+    width:100%;
+    z-index: 10;
+}
+
+.arrow img{
+    box-shadow: none;
+    width:30px;height:30px;
+
+}
+input[type=checkbox]{
+    position:absolute;
+    width:30px;height: 30px;
+}
+
+/* input[type=checkbox]:checked{
+    opacity: 0;
+} */
+
+.minProfileOptions{
+    position:absolute;
+    bottom:10px;
+    width:100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+}
+
+.minProfileOptions img{
+    box-shadow: none;
+    height:40px;width:40px;
+}
+.minSidebar{
+    display: none;
+}
+
+/*---------------- Media query -----------*/
+@media screen and (max-width: 992px) {
+    .Sidebar{
+        display: none;
+    }
+    .minSidebar{
+        display:block;
+        height: 100%;
+    }
+}

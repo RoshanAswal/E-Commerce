@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
 
-import img1 from '../../images/animeImage5.png';
-import img2 from '../../images/animeImage4.png';
-import img3 from '../../images/animeImage7.png';
-import img4 from '../../images/animeImage8.png';
-import img5 from '../../images/animeImage9.png';
-import img6 from '../../images/animeImage10.png';
+import img1 from '../../images/maleModel/model3.avif';
+import img2 from '../../images/maleModel/model4.avif';
+import img3 from '../../images/femaleModel/fmodel3.avif';
+import img4 from '../../images/maleModel/model2.avif';
+import img5 from '../../images/femaleModel/fmodel3.avif';
+import img6 from '../../images/femaleModel/fmodel6.avif';
 
 
 import HistoryProductCard from '../HistoryProductCard/HistoryProductCard';
+import styles from './HistoryProducts.module.css';
 
-import './HistoryProducts.css';
 
 const HistoryProducts = () => {
     const [ImgArr,setImgArr]=useState([]);
@@ -20,7 +20,7 @@ const HistoryProducts = () => {
     },[]);
 
     return (
-    <div className='History-Products'>
+    <div className={styles.HistoryProducts}>
         {
             ImgArr.map((img,key) =>
                 <HistoryProductCard key={key} img={img}/>

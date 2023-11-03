@@ -1,15 +1,15 @@
 import React from 'react'
 import HistoryProducts from '../HistoryProducts/HistoryProducts'
-import './HistoryComponent.css';
+import styles from './HistoryComponent.module.css';
 
 const HistoryComponent = () => {
   return (
-    <div className='HistoryComponent'>
-      <div className='historyHeader'>
+    <div className={styles.HistoryComponent}>
+      <div className={styles.historyHeader}>
         <h2>Your Order History</h2>
       </div>
       <hr/>
-      <div className='all-products'>
+      <div className={styles.allProducts}>
           <HistoryProducts/>
       </div>
     </div>

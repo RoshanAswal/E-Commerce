@@ -7,15 +7,16 @@ import img4 from "../../images/femaleModel/fmodel6.avif";
 import women from '../../images/woman.png';
 import bag from '../../images/bag.png';
 import heart from '../../images/heart.png';
-import './ProductPage.css';
+
+import styles from './ProductPage.module.css';
 import axios from 'axios';
 
 const ProductPage = () => {
   const location=useLocation();
 
   const [showDes,setShowDes]=useState(true);
-  const [cls1,setcls1]=useState('underline');
-  const [cls2,setcls2]=useState('no-underline');
+  const [cls1,setcls1]=useState(styles.underline);
+  const [cls2,setcls2]=useState(styles.noUnderline);
   const [mainImg,setMainImage]=useState(location.state.img);
   const [Img1,setImage1]=useState(img2);
   const [Img2,setImage2]=useState(img3);
@@ -48,15 +49,15 @@ const ProductPage = () => {
     }
   }
   return product && (
-    <div className="productPage">
-      <div className='Logo-div'>
+    <div className={styles.productPage}>
+      <div className={styles.LogoDiv}>
           <img src={women} alt='women'></img>
-          <h2><span style={{color:'#FF0800'}}>E</span>-<span style={{color:'black'}}>Mart</span></h2>
+          <h2 style={{color:'black'}}><span style={{color:'#FF0800'}}>E</span>-<span>Mart</span></h2>
       </div>
-      <div id="product-mid-div">
-        <div id="product-image-div">
-          <img src={mainImg} alt="" id='main-image' />
-          <div id="sample-div">
+      <div id={styles.productMidDiv}>
+        <div id={styles.productImageDiv}>
+          <img src={mainImg} alt="" id={styles.mainImage} />
+          <div id={styles.sampleDiv}>
             <img src={Img1} alt="" onClick={e=>{
               setMainImage(Img1);
               setImage1(mainImg);
@@ -71,21 +72,22 @@ const ProductPage = () => {
             }} />
           </div>
         </div>
-        <div id="product-detail-div">
-          <div id="short-detail-div">
-            <h1>{product.productName}</h1>
-            <h3>{product.productPrice} ₹</h3>
+        <div id={styles.productDetailDiv}>
+          <div id={styles.nameAndColor}>
+            <div id={styles.shortDetailDiv}>
+              <h1>{product.productName}</h1>
+              <h3>{product.productPrice} ₹</h3>
+            </div>
+            <div id={styles.colorDiv}>
+              <h3>Color</h3>
+              <button id={styles.color1}></button>
+              <button id={styles.color2}></button>
+              <button id={styles.color3}></button>
+            </div>
           </div>
-          <div id='color-div'>
-            <h3>Color</h3>
-            <button id='color-1'>red</button>
-            <button id='color-2'>green</button>
-            <button id='color-3'>blue</button>
-          </div>
-          <div id="size-div">
+          <div id={styles.sizeDiv}>
             <h3>Size</h3>
-            <div id='size-btns'>
-              <button>32</button>
+            <div id={styles.sizeBtns}>
               <button>33</button>
               <button>34</button>
               <button>35</button>
@@ -93,19 +95,19 @@ const ProductPage = () => {
               <button>37</button>
             </div>
           </div>
-          <div id="product-add-div">
-            <button id='add-btn' onClick={showMessage}>Add to Bag <img src={bag} /></button>
-            <button id='fav-btn'>Fav<img src={heart}/></button> 
+          <div id={styles.productAddDiv}>
+            <button id={styles.addBtn} onClick={showMessage}>Add to Bag <img src={bag} /></button>
+            {/* <button id={styles.favBtn}>Fav<img src={heart}/></button>  */}
           </div>
-          <div id="benefit-div">
+          <div id={styles.benefitDiv}>
             <h3>Free shipping </h3>
             <h3>25% off</h3>
           </div>
-          <div id="Description-div">
-            <div id="choose-div">
+          <div id={styles.DescriptionDiv}>
+            <div id={styles.chooseDiv}>
               <h2 className={cls1} 
                 onClick={()=>{
-                  setcls1('underline');setcls2('no-underline')
+                  setcls1(styles.underline);setcls2(styles.noUnderline)
                   setShowDes(true);
                 }}
               >
@@ -113,14 +115,14 @@ const ProductPage = () => {
               </h2>
               <h2 className={cls2} 
                 onClick={()=>{
-                  setcls2('underline');setcls1('no-underline')
+                  setcls2(styles.underline);setcls1(styles.noUnderline)
                   setShowDes(false);
                 }}>
                 More like this
               </h2>
             </div>
             <hr></hr>
-            <div id="Description-detail">
+            <div id={styles.DescriptionDetail}>
               {showDes
               ?
                 <ul>
@@ -131,10 +133,10 @@ const ProductPage = () => {
                   <li>Good quality and never fade away</li>
                 </ul>
               :
-              <div id='more-like-this-div'>
-                <img src={img1} alt="" className='example-img1' />
-                <img src={img2} alt="" className='example-img2'/>
-                <img src={img3} alt="" className='example-img3'/>
+              <div id={styles.moreLikeThisDiv}>
+                <img src={img1} alt="" className={styles.exampleImg1} />
+                <img src={img2} alt="" className={styles.exampleImg2}/>
+                <img src={img3} alt="" className={styles.exampleImg3}/>
               </div>
               }
             </div>

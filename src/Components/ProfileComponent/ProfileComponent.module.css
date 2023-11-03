@@ -1,40 +1,43 @@
-.profile-detail-section{
+.profileDetailSection{
     background-color: white;
-    padding:50px 300px 50px 20px;
+    padding:50px 250px 50px 20px;
 }
 
-.profile-detail-section > hr{
+.profileDetailSection > hr{
     margin-top:40px;
 }
 
-.profile-img > img{
+.profileImg > img{
     box-shadow: none;
     border-radius: 40%;
-    width:250px;
-    height:200px;
+    min-width:180px;
+    max-width: 250px;
+    height:auto;
 }
-.personal-info-section{
+.personalInfoSection{
     display: flex;
+    justify-content: space-between;
+    width:70%;
 }
-.general-info{
+.generalInfo{
+    max-width:100%;
+    margin:5% 0 0 2%;
+}
+.generalInfo div hr{
     width:100%;
-    margin:auto 0px auto 30px;
 }
-.general-info > hr{
-    width:100%;
-}
-.general-info > h4{
+.generalInfo div h4{
     font-family: 'Roboto', sans-serif;
     text-align: left !important;
     margin:7px 0;
     font-size:15px;
 }
-.general-info > h4 > span{
+.generalInfo div h4  span{
     margin-right:50px;
     font-weight: bold;
     font-size: 20px;
 }
-.general-info input{
+.generalInfo div input{
     box-shadow: none;
     border-radius: 0;
     
@@ -46,41 +49,44 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
 }
-.general-info input:focus{
+.generalInfo div input:focus{
     outline: none;
 }
 /*--------- Address section ------------*/
-.address-section{
+.addressSection{
     margin-top:40px;
 }
-.address-section > div > h2{
+.addressSection > div > h2{
     text-align: left;
     margin-top:20px;
     font-size:18px;
     font-family: 'Roboto', sans-serif;
 }
-.address-header > h1{
+.addressHeader > h1{
     text-align: left;
     margin-bottom:30px;
 }
 
-.first-address,#input-address{
+.firstAddress,#inputAddress{
     background-color: rgb(238, 229, 229);
     margin-top:20px;
     padding:10px 30px 30px 30px;      
     line-height: 25px;
 }
-.first-address > h2{
+.firstAddress{
+    left:0;
+}
+.firstAddress h2{
     font-family: 'Roboto', sans-serif;
     font-size:15px;
     text-align: left;
 }
 
-#input-address{
+#inputAddress{
     display: flex;
     flex-direction: column;
 }
-#input-address input{
+#inputAddress input{
     margin-top:10px;
     box-shadow: none;
     border-radius: 0;
@@ -93,27 +99,27 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
 }
-#input-address input:focus{
+#inputAddress input:focus{
     outline: none;
 }
 
 /*----------- Payment-section -----------*/
-.Payment-section{
+.PaymentSection{
     margin-top:30px;
 }
-.Payment-section > div> h2{
+.PaymentSection > div> h2{
     text-align: left;
 }
-.Payment-section > div> h3{
+.PaymentSection > div> h3{
     text-align: left;
     margin-top:20px;
 }
-.Payment-section > div > h3 > span{
+.PaymentSection > div > h3 > span{
     margin-left:30px;
     font-family: 'Roboto', sans-serif;
     font-size:15px;
 }
-.Payment-section > div > h3 > input{
+.PaymentSection > div > h3 > input{
     margin-left:20px;
     box-shadow: none;
     border-radius: 0;
@@ -126,24 +132,51 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
 }
-.Payment-section > div > h3 > input:focus{
+.PaymentSection > div > h3 > input:focus{
     outline: none;
 }
 
 /*-------------- Update button -----------*/
-.update-btn{
+.updateBtn{
     display: flex;
 }
-.update-btn > button{
+.updateBtn > button{
     border:none;
     font-size: 20px;
     border-radius: 0;
     width:150px;height:40px;
-    background-color: #33d35b;
+    background-color: #0e4135;
+
+    color:#FBD3DE;
     
     margin:70px 0 50px 0;
 }
-.update-btn > button:hover{
+.updateBtn > button:hover{
     color:yellow;
     cursor: pointer;
+}
+
+/*------------- Media query under 1000 -----------*/
+
+@media screen and (max-width: 1000px){
+    .profileDetailSection{
+        padding-right:50px;
+    }
+}
+
+/*------------- Media query under 800 -----------*/
+
+@media screen and (max-width:800px){
+    .personalInfoSection{
+        flex-direction: column;
+    }
+    .profileImg > img{
+        width:80%;
+        margin-bottom: 20px;
+    }
+    .generalInfo{
+        display: flex;
+        flex-direction: column;
+        margin-left:0;
+    }
 }

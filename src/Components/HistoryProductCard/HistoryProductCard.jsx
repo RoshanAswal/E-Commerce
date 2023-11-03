@@ -10,8 +10,10 @@ const HistoryProductCard = ({img}) => {
 
     return (
     <div className={styles.products_card}>
-        <div className={styles.history_product_card}>
+        <div className={styles.mainImg}>
             <img src={img} alt='t-shirt img' />
+        </div>   
+        <div className={styles.history_product_description}>
             {
                 showDetail
                 ?
@@ -63,7 +65,6 @@ const HistoryProductCard = ({img}) => {
                 </button>
             </div>
         </div> 
-
     </div>                
 )
 }

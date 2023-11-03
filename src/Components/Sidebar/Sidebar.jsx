@@ -1,10 +1,14 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { FilterContext } from '../../Context/FilterContext';
-import './Sidebar.css';
+
+import styles from './Sidebar.module.css';
 import women from '../../images/woman.png';
 import search from '../../images/search.png';
 import setting from '../../images/settings.png';
 import profile from '../../images/profile-user.png';
+import leftArrow from '../../images/left-arrow.png';
+import rightArrow from '../../images/right-arrow.png';
+
 import { Link,useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,6 +22,9 @@ const Sidebar = () => {
 
     const navigate=useNavigate();
     const [cookie,setCookie]=useCookies(["access_token"]);
+    const [arrowImg,setArrowImg]=useState(rightArrow);
+    const [slideCls,setSlideCls]=useState(styles.minFilter)
+    const [width,setWidth]=useState(window.screen.width);
 
     useEffect(()=>{
         if(cookie.access_token!==null){
@@ -25,74 +32,158 @@ const Sidebar = () => {
         }
     },[]);
 
-    const logoutActionFunction=()=>{
+
+    const logoutActionFunction=(e)=>{
+        e.preventDefault();
         dispatch(LogoutAction())
         window.localStorage.removeItem('userId');
     }
-
+    const changeArrowImg=(e)=>{
+        e.preventDefault();
+        if(arrowImg===leftArrow){
+            setArrowImg(rightArrow);
+            setSlideCls(styles.minFilter);
+        }else{
+            setArrowImg(leftArrow);
+            setSlideCls(styles.minFilter1);
+        }
+    }
   return (
-    <div className='Sidebar'>
-        <div className='Logo-div'>
-            <img src={women} alt='women'></img>
-            <h2><span style={{color:'#FF0800'}}>E</span>-<span style={{color:'black'}}>Mart</span></h2>
-        </div>
-        <div className='Filter-div'>
-            <div className='Search-div'>
-                <input type='text'/>
-                <img src={search} alt='search'></img>
+    <div>
+        <div className={styles.minSidebar}>
+            <div className={styles.minLogoDiv}>
+                <h2>{isLoggedIn}</h2>
+                <img src={women} alt='women'></img>
+                <h2><span style={{color:'#FF0800'}}>E</span>-<span style={{color:'#FBD3DE'}}>Mart</span></h2>
             </div>
-            <div className='Gender-age-div'>
-                <select onChange={e=>{setGender(e.target.value)}}>
-                    <option value="Men">Men</option>
-                    <option value="Women">Women</option>
-                </select>
-                <select onChange={e=>{setAge(e.target.value)}}>
-                    <option value="20" >20</option>
-                    <option value="40" >40</option>
-                    <option value="50" >50</option>
-                    <option value="70" selected>70</option>
-                </select>
+            <div className={styles.arrow}>
+                <img src={arrowImg} alt='arrow' onClick={(e)=>changeArrowImg(e)}></img>
             </div>
-            <div className='Range-div'>
-                <div className='price-tag'>
-                    <h3>{"< "}{price}₹</h3>
+            <div className={slideCls}>
+                <div className={styles.minLogoDiv}>
+                    <img src={women} alt='women'></img>
+                    <h2><span style={{color:'#FF0800'}}>E</span>-<span style={{color:'#FBD3DE'}}>Mart</span></h2>
                 </div>
-                <input type='range' min="2000" max="10000" onInput={e=>{setPrice(e.target.value)}}/>
+                <div className={styles.FilterDiv}>
+                    <div className={styles.SearchDiv}>
+                        <input type='text'/>
+                        <img src={search} alt='search'></img>
+                    </div>
+                    <div className={styles.GenderAgeDiv}>
+                        <select onChange={e=>{setGender(e.target.value)}}>
+                            <option value="Men">Men</option>
+                            <option value="Women">Women</option>
+                        </select>
+                        <select onChange={e=>{setAge(e.target.value)}}>
+                            <option value="20" >20</option>
+                            <option value="40" >40</option>
+                            <option value="50" >50</option>
+                            <option value="70" selected>70</option>
+                        </select>
+                    </div>
+                    <div className={styles.RangeDiv}>
+                        <div className={styles.priceTag}>
+                            <h3>{"< "}{price}₹</h3>
+                        </div>
+                        <input type='range' min="2000" max="10000" onInput={e=>{setPrice(e.target.value)}}/>
+                    </div>
+                    <div className={styles.BrandsDiv}>
+                        <h3>Brands</h3>
+                        <select onChange={e=>{setBrand(e.target.value)}}>
+                            <option value="All" selected>All</option>
+                            <option value="Gucci">Gucci</option>
+                            <option value="Nike">Nike</option>
+                            <option value="Puma">Puma</option>
+                            <option value="Adidas">Adidas</option>
+                            <option value="Armani">Armani</option>
+                            <option value="Nautica">Nautica</option>
+                        </select>
+                    </div>
+                    <div className={styles.SeasonDiv}>
+                        <h3>Season</h3>
+                        <select onChange={e=>{setSeason(e.target.value)}}>
+                            <option value="All" selected>All</option>
+                            <option value="Winter">Winter</option>
+                            <option value="Summer">Summer</option>
+                        </select>
+                    </div>
+                </div>
             </div>
-            <div className='Brands-div'>
-                <h3>Brands</h3>
-                <select onChange={e=>{setBrand(e.target.value)}}>
-                    <option value="All" selected>All</option>
-                    <option value="Gucci">Gucci</option>
-                    <option value="Nike">Nike</option>
-                    <option value="Puma">Puma</option>
-                    <option value="Adidas">Adidas</option>
-                    <option value="Armani">Armani</option>
-                    <option value="Nautica">Nautica</option>
-                </select>
-            </div>
-            <div className='Season-div'>
-                <h3>Season</h3>
-                <select onChange={e=>{setSeason(e.target.value)}}>
-                    <option value="All" selected>All</option>
-                    <option value="Winter">Winter</option>
-                    <option value="Summer">Summer</option>
-                </select>
-            </div>
-        </div>
-
-        <div className='Menu-div'>
-            <div id='Menu-options'>
-                <div className='options-div'>
+            <div className={styles.minProfileOptions}>
+                <div className={styles.optionsDiv}>
                     <Link to={isLoggedIn==='True'?"/profile":"/signup"}>
-                    <img id='profile' src={profile} alt='profile'></img>
+                    <img id={styles.profile} src={profile} alt='profile'></img>
                     </Link>
-                    <img id='setting' src={setting} 
-                        onClick={logoutActionFunction}
+                    <img id={styles.setting} src={setting} 
+                        onClick={e=>logoutActionFunction(e)}
                     alt='setting'></img>
                 </div>
-                <div className='credential-div'>
-                    <h3>Developed by Roshan Aswal</h3>
+            </div>        
+        </div>
+
+        <div className={styles.Sidebar}>
+            <div className={styles.LogoDiv}>
+                <img src={women} alt='women'></img>
+                <h2><span style={{color:'#FF0800'}}>E</span>-<span style={{color:'#FBD3DE'}}>Mart</span></h2>
+            </div>
+            <div className={styles.FilterDiv}>
+                <div className={styles.SearchDiv}>
+                    <input type='text'/>
+                    <img src={search} alt='search'></img>
+                </div>
+                <div className={styles.GenderAgeDiv}>
+                    <select onChange={e=>{setGender(e.target.value)}}>
+                        <option value="Men">Men</option>
+                        <option value="Women">Women</option>
+                    </select>
+                    <select onChange={e=>{setAge(e.target.value)}}>
+                        <option value="20" >20</option>
+                        <option value="40" >40</option>
+                        <option value="50" >50</option>
+                        <option value="70" selected>70</option>
+                    </select>
+                </div>
+                <div className={styles.RangeDiv}>
+                    <div className={styles.priceTag}>
+                        <h3>{"< "}{price}₹</h3>
+                    </div>
+                    <input type='range' min="2000" max="10000" onInput={e=>{setPrice(e.target.value)}}/>
+                </div>
+                <div className={styles.BrandsDiv}>
+                    <h3>Brands</h3>
+                    <select onChange={e=>{setBrand(e.target.value)}}>
+                        <option value="All" selected>All</option>
+                        <option value="Gucci">Gucci</option>
+                        <option value="Nike">Nike</option>
+                        <option value="Puma">Puma</option>
+                        <option value="Adidas">Adidas</option>
+                        <option value="Armani">Armani</option>
+                        <option value="Nautica">Nautica</option>
+                    </select>
+                </div>
+                <div className={styles.SeasonDiv}>
+                    <h3>Season</h3>
+                    <select onChange={e=>{setSeason(e.target.value)}}>
+                        <option value="All" selected>All</option>
+                        <option value="Winter">Winter</option>
+                        <option value="Summer">Summer</option>
+                    </select>
+                </div>
+            </div>
+
+            <div className={styles.MenuDiv}>
+                <div id={styles.MenuOptions}>
+                    <div className={styles.optionsDiv}>
+                        <Link to={isLoggedIn==='True'?"/profile":"/signup"}>
+                        <img id={styles.profile} src={profile} alt='profile'></img>
+                        </Link>
+                        <img id={styles.setting} src={setting} 
+                            onClick={e=>logoutActionFunction(e)}
+                        alt='setting'></img>
+                    </div>
+                    <div className={styles.credentialDiv}>
+                        <h3>Developed by Roshan Aswal</h3>
+                    </div>
                 </div>
             </div>
         </div>

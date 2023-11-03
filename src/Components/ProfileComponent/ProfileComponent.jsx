@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import profileImg from '../../images/shikamaru.jpg';
-import './ProfileComponent.css';
+import styles from './ProfileComponent.module.css';
 import axios from 'axios';
 
 const ProfileComponent = (props) => {
@@ -20,37 +20,39 @@ const ProfileComponent = (props) => {
   },[]);
 
   return (
-    <div className="profile-detail-section">
-    <div className="personal-info-section">
-      <div className="profile-img">
+    <div className={styles.profileDetailSection}>
+    <div className={styles.personalInfoSection}>
+      <div className={styles.profileImg}>
         <img src={profileImg} alt="profile"></img>
       </div>
-      {
-        props.toedit
-        ?
-        <div className="general-info">
-          <h4><span>Name</span><input autoFocus></input></h4>
-          <hr />
-          <h4><span>Email</span><input></input></h4>
-          <hr />
-          <h4><span>Mobile</span><input></input></h4>
-          <hr />
-        </div>
-        :
-        <div className="general-info">
-          <h4><span>Name</span>{user?.username?user.username:'N/A'}</h4>
-          <hr />
-          <h4><span>Email</span>{user?.email?user.email:'N/A'}</h4>
-          <hr />
-          <h4><span>Mobile</span>{user?.phoneNo?user.phoneNo:'N/A'}</h4>
-          <hr />
-        </div>
-      }
+      <div className={styles.generalInfo}>
+        {
+          props.toedit
+          ?
+          <div>
+            <h4><span>Name</span><input autoFocus></input></h4>
+            <hr />
+            <h4><span>Email</span><input></input></h4>
+            <hr />
+            <h4><span>Mobile</span><input></input></h4>
+            <hr />
+          </div>
+          :
+          <div>
+            <h4><span>Name</span><br />{user?.username?user.username:'N/A'}</h4>
+            <hr />
+            <h4><span>Email</span><br />{user?.email?user.email:'N/A'}</h4>
+            <hr />
+            <h4><span>Mobile</span><br />{user?.phoneNo?user.phoneNo:'N/A'}</h4>
+            <hr />
+          </div>
+        }
+      </div>
 
     </div>
     <hr />
-    <div className="address-section">
-      <div className="address-header">
+    <div className={styles.addressSection}>
+      <div className={styles.addressHeader}>
         <h1>Shipping Address</h1>
       </div>
       {
@@ -58,14 +60,14 @@ const ProfileComponent = (props) => {
         ?
         <div>
           <h2>Address #1</h2>
-          <div id='input-address'>
+          <div id={styles.inputAddress}>
             <input></input>
             <input></input>
             <input></input>
             <input></input>
           </div>
           <h2>Address #2</h2>
-          <div id='input-address'>
+          <div id={styles.inputAddress}>
             <input></input>
             <input></input>
             <input></input>
@@ -75,7 +77,7 @@ const ProfileComponent = (props) => {
         :
         <div>
           <h2>Address #1</h2>
-          <div className="first-address">
+          <div className={styles.firstAddress}>
             {user?.address1
             ?user.address1
             :  <div>
@@ -89,7 +91,7 @@ const ProfileComponent = (props) => {
 
           </div>
           <h2>Address #2</h2>
-          <div className="first-address">
+          <div className={styles.firstAddress}>
           {user?.address2
           ?user.address2
           :    
@@ -107,7 +109,7 @@ const ProfileComponent = (props) => {
 
     </div>
     <hr/>
-    <div className="Payment-section">
+    <div className={styles.PaymentSection}>
       <div>
         <h2>Payment Details</h2>
       </div>
@@ -127,7 +129,7 @@ const ProfileComponent = (props) => {
     </div>
     {
       props.toedit?
-      <div className='update-btn'>
+      <div className={styles.updateBtn}>
         <button>Update</button>
       </div>
       :""

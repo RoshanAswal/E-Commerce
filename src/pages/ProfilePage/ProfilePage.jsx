@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import './ProfilePage.css';
+
+import styles from './ProfilePage.module.css';
 
 import genImg from '../../images/information-button.png';
 import likedImg from '../../images/heart.png';
@@ -22,36 +23,36 @@ const ProfilePage = () => {
   }
 
   return (
-    <div className="profile-page">
-      <div className="header-section">
+    <div className={styles.profilePage}>
+      <div className={styles.headerSection}>
         <h1>Profile Page</h1>
       </div>
-      <div className="profile-section">
+      <div className={styles.profileSection}>
         {choosen==='gen'?
-                <div className="edit-btn">
+                <div className={styles.editBtn}>
                 <img src={edit} alt="edit-btn" onClick={()=>{setEdit(!toedit)}}/>
                 <span>Edit</span>  
               </div>
         :""
         }
-        <div className="profile-menu-section">
-          <div className={choosen==='gen'?'choosen':""}
+        <div className={styles.profileMenuSection}>
+          <div className={choosen==='gen'?styles.choosen:""}
               onClick={()=>{setChoosen('gen')}}>
             <img src={genImg} alt="gen" />
             <h4>General</h4>
           </div>
-          <div className={choosen==='liked'?'choosen':""}
+          <div className={choosen==='liked'?styles.choosen:""}
               onClick={()=>{setChoosen('liked')}}>
             <img src={likedImg} alt="liked"></img>
             <h4>Liked Products</h4>
           </div>
-          <div className={choosen==='his'?'choosen':""}
+          <div className={choosen==='his'?styles.choosen:""}
               onClick={()=>{setChoosen('his')}}>
             <img src={hisImg} alt="history"></img>
             <h4>Order History</h4>
           </div>
         </div>
-        <div className="general-section">
+        <div className={styles.generalSection}>
           {renderSection()}
         </div>
 
