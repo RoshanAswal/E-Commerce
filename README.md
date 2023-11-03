@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# E-Commerce
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a full-stack e-commerce web application to buy t-shirts for both men and women.
 
-## Available Scripts
+![Screenshot 2023-11-01 105813](https://github.com/RoshanAswal/E-Commerce/assets/73030476/d5a95d19-af76-4414-8303-ab9f0061660b)
 
-In the project directory, you can run:
+![Screenshot 2023-11-01 105841](https://github.com/RoshanAswal/E-Commerce/assets/73030476/3d6701f9-9099-4ac3-93a8-f7c4e48292e9)
 
-### `npm start`
+## Available Filters
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Filters include: - 
+Gender (find a t-shirt according to your gender)
+Age (T-shirt available for different age groups)
+Price (a price bar available to choose a t-shirt under the specific price tag)
+Brand (a variety of brand choices can be used to filter t-shirts)
+Season (t-shirts for different seasons can be filtered)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Login and Register Page
 
-### `npm test`
+![Screenshot 2023-11-01 110250](https://github.com/RoshanAswal/E-Commerce/assets/73030476/2b6add19-777b-4e17-8902-18aefb4fa1eb)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Screenshot 2023-11-01 110307](https://github.com/RoshanAswal/E-Commerce/assets/73030476/1476e3d0-efe5-4f17-a444-cba7edf74502)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Profile Page
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Users can find their details like their contact information also their shipping address in the profile section along with their UPI ID
+for transactions.
+![Screenshot 2023-11-01 105857](https://github.com/RoshanAswal/E-Commerce/assets/73030476/722eea00-7aeb-4df6-9ac0-8e1470a7ec79)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The profile can be easily edited on the go with an edit button and the UI will change as shown below :
 
-### `npm run eject`
+![Screenshot 2023-11-01 105911](https://github.com/RoshanAswal/E-Commerce/assets/73030476/ca41670d-24f7-4f25-94d9-ab387d8e180a)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Product Page
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The product page contains t-shirt information along with suitable recommendations according to the selected items
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![Screenshot 2023-11-01 114336](https://github.com/RoshanAswal/E-Commerce/assets/73030476/490cb2d7-2757-4c86-8dd4-ea351fdf02b4)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Liked Products / Cart
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+All the favorite products can be seen inside the liked component with the functionality of delete, increase capacity, and checkout 
+the products
 
-### Code Splitting
+![Screenshot 2023-11-01 110036](https://github.com/RoshanAswal/E-Commerce/assets/73030476/d6c5f0ea-f948-48e3-bfa3-f26cd5f42cdd)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+### History Products
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+All the checkout products from the cart can be seen in the History Component as your purchase history with the functionality of delete.
+Also the date and time of purchase and delivery.
 
-### Making a Progressive Web App
+![Screenshot 2023-11-01 110239](https://github.com/RoshanAswal/E-Commerce/assets/73030476/3ce0fcf1-7da6-4109-881c-7e8942908183)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Dummy User
+## username - Roshan
+## Password - Jump
