@@ -52,7 +52,6 @@ const Sidebar = () => {
     <div>
         <div className={styles.minSidebar}>
             <div className={styles.minLogoDiv}>
-                <h2>{isLoggedIn}</h2>
                 <img src={women} alt='women'></img>
                 <h2><span style={{color:'#FF0800'}}>E</span>-<span style={{color:'#FBD3DE'}}>Mart</span></h2>
             </div>

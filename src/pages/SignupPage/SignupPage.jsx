@@ -59,6 +59,13 @@ const SignupPage = () => {
   return (
     <div className={styles.SignupPageDiv}>
       <div className={styles.formSection}>
+        <div className={styles.posterDiv}>
+          {signIn ? (
+            <img src={poster1} alt="Naruto-poster"></img>
+          ) : (
+            <img src={poster2} alt="Girl-poster"></img>
+          )}
+        </div>
         <div className={styles.forms}>
           {signIn ? (
             <form id={styles.form}>
@@ -154,13 +161,7 @@ const SignupPage = () => {
             </form>
           )}
         </div>
-        <div className={styles.posterDiv}>
-          {signIn ? (
-            <img src={poster1} alt="Naruto-poster"></img>
-          ) : (
-            <img src={poster2} alt="Girl-poster"></img>
-          )}
-        </div>
+
       </div>
     </div>
   );
