@@ -31,7 +31,7 @@ const Home = () => {
 
     const fetchProducts=async ()=>{
       try{
-        const response=await axios.get("http://localhost:3001/");
+        const response=await axios.get("https://e-commerce-backend-teal.vercel.app/");
         setProducts(response.data.products);
       }catch(err){
         console.log(err);

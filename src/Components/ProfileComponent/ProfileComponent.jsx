@@ -10,7 +10,7 @@ const ProfileComponent = (props) => {
   useEffect(()=>{
     const fetchUser=async ()=>{
       try{
-        const response=await axios.get(`http://localhost:3001/profile/${userId}`);
+        const response=await axios.get(`https://e-commerce-backend-teal.vercel.app/profile/${userId}`);
         setUser(response.data.user);
       }catch(err){
         console.log(err);
