@@ -2,9 +2,11 @@
 
 This is a full-stack e-commerce web application to buy t-shirts for both men and women.
 
-![Screenshot 2023-11-01 105813](https://github.com/RoshanAswal/E-Commerce/assets/73030476/d5a95d19-af76-4414-8303-ab9f0061660b)
+Note - Website is fully responsive
 
-![Screenshot 2023-11-01 105841](https://github.com/RoshanAswal/E-Commerce/assets/73030476/3d6701f9-9099-4ac3-93a8-f7c4e48292e9)
+![Screenshot 2023-11-04 084240](https://github.com/RoshanAswal/E-Commerce/assets/73030476/02c2672b-41c7-4f9f-8f5d-6801138e1cb4)
+
+![Screenshot 2023-11-04 084252](https://github.com/RoshanAswal/E-Commerce/assets/73030476/bf47b52f-a4bf-44e1-a492-9a04e986fd9b)
 
 ## Available Filters
 
