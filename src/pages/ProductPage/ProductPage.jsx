@@ -24,13 +24,13 @@ const ProductPage = () => {
   const [product,setProduct]=useState();
 
   let {productId}=useParams();
-
+  
   
   useEffect(()=>{
 
     const fetchProduct=async ()=>{
       try{
-        const response=await axios.get(`https://e-commerce-backend-teal.vercel.app/${productId}`);
+        const response=await axios.get(`https://e-commerce-backend-pearl.vercel.app/${productId}`);
         setProduct(response.data.product);
       }catch(err){
         console.log(err);
@@ -42,7 +42,7 @@ const ProductPage = () => {
   const showMessage=async ()=>{
     window.alert("added to cart");
     try{
-      const response=new axios.post(`https://e-commerce-backend-teal.vercel.app/${productId}/addCart`);
+      const response=new axios.post(`https://e-commerce-backend-pearl.vercel.app/${productId}/addCart`);
       
     }catch(err){
       console.log(err);

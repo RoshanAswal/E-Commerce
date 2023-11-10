@@ -20,7 +20,7 @@ const SignupPage = () => {
   const loginFunction =async (e) => {
     e.preventDefault();
     try {
-      const response =await axios.post("https://e-commerce-backend-teal.vercel.app/auth/login", {
+      const response =await axios.post("https://e-commerce-backend-pearl.vercel.app/auth/login", {
         username: username,
         password: password,
       });
@@ -44,7 +44,7 @@ const SignupPage = () => {
       if (password !== confirmPassword) {
         window.alert("Both passwords should match");
       } else {
-        const response =await axios.post("https://e-commerce-backend-teal.vercel.app/auth/register", {
+        const response =await axios.post("https://e-commerce-backend-pearl.vercel.app/auth/register", {
           username: username,
           password: password,
           email: email,
