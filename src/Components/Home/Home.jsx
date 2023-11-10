@@ -33,6 +33,7 @@ const Home = () => {
       try{
         const response=await axios.get("https://e-commerce-backend-pearl.vercel.app/");
         setProducts(response?.data?.products);
+        console.log(response);
       }catch(err){
         console.log(err);
       }
@@ -55,21 +56,22 @@ const Home = () => {
         {
           products?.map((e,key)=>{
             let ind=Math.floor(Math.random()*arrM.length)
-            return gender==="Men"
-            ?    
-            e.minAge<=age && 
-            (e.productPrice>=0) && 
-            (brand==='All' || e.brand===brand) &&
-            (season==='All' || e.Season===season)?
-            <ProductCard img={arrM[ind%(arrM.length)]} pro={e}/>
-            :""
-            :
-            e.minAge<=age && 
-            (e.productPrice>=0) && 
-            (brand==='All' || e.brand===brand) &&
-            (season==='All' || e.Season===season)?
-            <ProductCard img={arrF[ind%(arrF.length)]} pro={e}/>
-            :""
+            return <ProductCard img={arrM[ind%(arrF.length)]} pro={e}/>
+            // return gender==="Men"
+            // ?    
+            // e.minAge<=age && 
+            // (e.productPrice>=0) && 
+            // (brand==='All' || e.brand===brand) &&
+            // (season==='All' || e.Season===season)?
+            // <ProductCard img={arrM[ind%(arrM.length)]} pro={e}/>
+            // :""
+            // :
+            // e.minAge<=age && 
+            // (e.productPrice>=0) && 
+            // (brand==='All' || e.brand===brand) &&
+            // (season==='All' || e.Season===season)?
+            // <ProductCard img={arrF[ind%(arrF.length)]} pro={e}/>
+            // :""
           })
 
         }
