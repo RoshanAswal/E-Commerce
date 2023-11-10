@@ -32,7 +32,7 @@ const Home = () => {
     const fetchProducts=async ()=>{
       try{
         const response=await axios.get("https://e-commerce-backend-pearl.vercel.app/");
-        setProducts(response.data.products);
+        setProducts(response?.data?.products);
       }catch(err){
         console.log(err);
       }
@@ -53,7 +53,7 @@ const Home = () => {
       <h1 className={styles.message}>All your wants and needs of t-shirt is <span style={{color:'red'}}>Here</span></h1>
       <div className={styles.ProductCards}>
         {
-          products.map((e,key)=>{
+          products?.map((e,key)=>{
             let ind=Math.floor(Math.random()*arrM.length)
             return gender==="Men"
             ?    
