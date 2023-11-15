@@ -1,5 +1,9 @@
 # E-Commerce
 
+### Dummy User
+## username - kami  
+## Password - 123
+
 This is a full-stack e-commerce web application to buy t-shirts for both men and women.
 
 Note - Website is fully responsive
@@ -57,7 +61,3 @@ Also the date and time of purchase and delivery.
 
 ![Screenshot 2023-11-01 110239](https://github.com/RoshanAswal/E-Commerce/assets/73030476/3ce0fcf1-7da6-4109-881c-7e8942908183)
 
-
-### Dummy User
-## username - Roshan
-## Password - Jump
