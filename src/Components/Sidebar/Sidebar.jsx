@@ -143,7 +143,7 @@ const Sidebar = () => {
                 </div>
                 <div className={styles.RangeDiv}>
                     <div className={styles.priceTag}>
-                        <h3>{"< "}{price}₹</h3>
+                        <h3>{"> "}{price}₹</h3>
                     </div>
                     <input type='range' min="2000" max="10000" onInput={e=>{setPrice(e.target.value)}}/>
                 </div>
