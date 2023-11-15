@@ -60,7 +60,7 @@ const Home = () => {
             return gender==="Men"
             ?    
             e.minAge<=age && 
-            (e.productPrice<=price) && 
+            (e.productPrice>=price) && 
             (brand==='All' || e.brand===brand) &&
             (season==='All' || e.Season===season)
               ?
@@ -68,7 +68,7 @@ const Home = () => {
               :""
             :
             e.minAge<=age && 
-            (e.productPrice<=price) && 
+            (e.productPrice>=price) && 
             (brand==='All' || e.brand===brand) &&
             (season==='All' || e.Season===season)
               ?
