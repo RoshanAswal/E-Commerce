@@ -28,7 +28,7 @@ const SignupPage = () => {
   const loginFunction =async (e) => {
     e.preventDefault();
     try {
-      const response =await axios.post(`${process.env.REACT_APP_LOCAL_URL}auth/login`, {
+      const response =await axios.post(`${process.env.REACT_APP_REMOTE_URL}auth/login`, {
         username,password
       });
 
@@ -57,7 +57,7 @@ const SignupPage = () => {
           position:toast.POSITION.TOP_RIGHT
         })
       } else {
-        const response =await axios.post(`${process.env.REACT_APP_LOCAL_URL}auth/register`, {
+        const response =await axios.post(`${process.env.REACT_APP_REMOTE_URL}auth/register`, {
           username,password,email
         });
 

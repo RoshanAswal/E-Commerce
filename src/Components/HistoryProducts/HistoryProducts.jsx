@@ -20,7 +20,7 @@ const HistoryProducts = () => {
 
     useEffect(()=>{
         const fetchLikedProducts=async ()=>{
-            const response=await axios.get(`${process.env.REACT_APP_LOCAL_URL}profile/${userId}/history`);
+            const response=await axios.get(`${process.env.REACT_APP_REMOTE_URL}profile/${userId}/history`);
             if(response.data.products!=null)
                 setProducts(response?.data?.products);
         }

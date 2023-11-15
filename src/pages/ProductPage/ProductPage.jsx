@@ -32,7 +32,7 @@ const ProductPage = () => {
 
     const fetchProduct=async ()=>{
       try{
-        const response=await axios.get(`${process.env.REACT_APP_LOCAL_URL}${productId}`);
+        const response=await axios.get(`${process.env.REACT_APP_REMOTE_URL}${productId}`);
         setProduct(response.data.product);
       }catch(err){
         console.log(err);
@@ -55,7 +55,7 @@ const ProductPage = () => {
 
   const addToCart=async (productId)=>{
     try{
-      const response=await axios.put(`${process.env.REACT_APP_LOCAL_URL}${userId}/${productId}/addCart`);
+      const response=await axios.put(`${process.env.REACT_APP_REMOTE_URL}${userId}/${productId}/addCart`);
       const msg=response.data.msg;
       showMessage(msg)
     }catch(err){

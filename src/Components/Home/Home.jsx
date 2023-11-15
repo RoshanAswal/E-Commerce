@@ -31,7 +31,7 @@ const Home = () => {
 
     const fetchProducts=async ()=>{
       try{
-        const response=await axios.get(`${process.env.REACT_APP_LOCAL_URL}`);
+        const response=await axios.get(`${process.env.REACT_APP_REMOTE_URL}`);
         setProducts(response?.data?.products);
         
       }catch(err){

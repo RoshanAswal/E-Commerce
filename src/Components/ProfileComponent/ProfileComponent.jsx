@@ -22,7 +22,7 @@ const ProfileComponent = (props) => {
   useEffect(()=>{
     const fetchUser=async ()=>{
       try{
-        const response=await axios.get(`${process.env.REACT_APP_LOCAL_URL}profile/${userId}`);
+        const response=await axios.get(`${process.env.REACT_APP_REMOTE_URL}profile/${userId}`);
         setUser(response.data.user);
       }catch(err){
         console.log(err);
@@ -33,7 +33,7 @@ const ProfileComponent = (props) => {
 
   const updateFunction=async ()=>{
     try{
-      await axios.put(`${process.env.REACT_APP_LOCAL_URL}profile/edit/${userId}`,{
+      await axios.put(`${process.env.REACT_APP_REMOTE_URL}profile/edit/${userId}`,{
         username,email,phoneNo,address1,address2,upiId1,upiId2
       });
       toast.success('Profile Updated',{

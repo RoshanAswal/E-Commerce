@@ -15,7 +15,7 @@ const HistoryProductCard = (props) => {
     const userId=window.localStorage.getItem('userId');
 
     const deleteProduct=async ()=>{
-        const response=await axios.put(`${process.env.REACT_APP_LOCAL_URL}profile/${userId}/deleteProduct`,
+        const response=await axios.put(`${process.env.REACT_APP_REMOTE_URL}profile/${userId}/deleteProduct`,
         {model:'his',index:props.key});
         const msg=response.data.data;
         if(msg!=='error'){

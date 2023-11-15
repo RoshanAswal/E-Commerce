@@ -24,7 +24,7 @@ const LikedComponent = () => {
 
     useEffect(()=>{
         const fetchLikedProducts=async ()=>{
-            const response=await axios.get(`${process.env.REACT_APP_LOCAL_URL}profile/${userId}/cart`);
+            const response=await axios.get(`${process.env.REACT_APP_REMOTE_URL}profile/${userId}/cart`);
             if(response.data.products!=null)
                 setProducts(response?.data?.products);
         }
@@ -48,13 +48,13 @@ const LikedComponent = () => {
 
     const addInHistory=async (e)=>{
         e.preventDefault();
-        const response=await axios.put(`${process.env.REACT_APP_LOCAL_URL}profile/cart/checkout/${userId}`);
+        const response=await axios.put(`${process.env.REACT_APP_REMOTE_URL}profile/cart/checkout/${userId}`);
         showMessage(response.data.data);
     }
 
     const deleteFromCart=async (e,index)=>{
         e.preventDefault();
-        const response=await axios.put(`${process.env.REACT_APP_LOCAL_URL}profile/${userId}/deleteProduct`,{
+        const response=await axios.put(`${process.env.REACT_APP_REMOTE_URL}profile/${userId}/deleteProduct`,{
             model:'liked',index
         });
         showMessage(response.data.data);
