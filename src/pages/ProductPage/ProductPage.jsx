@@ -6,10 +6,12 @@ import img3 from "../../images/femaleModel/fmodel5.avif";
 import img4 from "../../images/femaleModel/fmodel6.avif";
 import women from '../../images/woman.png';
 import bag from '../../images/bag.png';
-import heart from '../../images/heart.png';
 
 import styles from './ProductPage.module.css';
 import axios from 'axios';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductPage = () => {
   const location=useLocation();
@@ -24,13 +26,13 @@ const ProductPage = () => {
   const [product,setProduct]=useState();
 
   let {productId}=useParams();
-  
+  const userId=window.localStorage.getItem('userId');
   
   useEffect(()=>{
 
     const fetchProduct=async ()=>{
       try{
-        const response=await axios.get(`https://e-commerce-backend-pearl.vercel.app/${productId}`);
+        const response=await axios.get(`${process.env.REACT_APP_LOCAL_URL}${productId}`);
         setProduct(response.data.product);
       }catch(err){
         console.log(err);
@@ -39,11 +41,23 @@ const ProductPage = () => {
     fetchProduct();
   },[]);
 
-  const showMessage=async ()=>{
-    window.alert("added to cart");
+  const showMessage=(msg)=>{
+    if(msg!=='error'){
+        toast.success(msg,{
+            position:toast.POSITION.TOP_RIGHT
+        })
+    }else{
+        toast.error(msg,{
+            position:toast.POSITION.TOP_RIGHT
+        })
+    }
+}
+
+  const addToCart=async (productId)=>{
     try{
-      const response=new axios.post(`https://e-commerce-backend-pearl.vercel.app/${productId}/addCart`);
-      
+      const response=await axios.put(`${process.env.REACT_APP_LOCAL_URL}${userId}/${productId}/addCart`);
+      const msg=response.data.msg;
+      showMessage(msg)
     }catch(err){
       console.log(err);
     }
@@ -96,7 +110,7 @@ const ProductPage = () => {
             </div>
           </div>
           <div id={styles.productAddDiv}>
-            <button id={styles.addBtn} onClick={showMessage}>Add to Bag <img src={bag} /></button>
+            <button id={styles.addBtn} onClick={(e)=>addToCart(product._id)}>Add to Bag <img src={bag} alt='bag'/></button>
             {/* <button id={styles.favBtn}>Fav<img src={heart}/></button>  */}
           </div>
           <div id={styles.benefitDiv}>
@@ -143,6 +157,7 @@ const ProductPage = () => {
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </div>
   );
 

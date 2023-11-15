@@ -79,6 +79,7 @@ body{
 .profileMenuSection >div>img{
     box-shadow: none;
     max-height:20px;
+    width: auto;
     margin-right:10px;
 }
 .profileMenuSection > .choosen{

@@ -3,14 +3,26 @@ import profileImg from '../../images/shikamaru.jpg';
 import styles from './ProfileComponent.module.css';
 import axios from 'axios';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const ProfileComponent = (props) => {
   const [user,setUser]=useState();
   const userId=window.localStorage.getItem('userId');
 
+  const [username,setUsername]=useState('');
+  const [email,setEmail]=useState('');
+  const [phoneNo,setPhoneNo]=useState('');
+  const [address1,setAddress1]=useState('');
+  const [address2,setAddress2]=useState('');
+  const [upiId1,setUpiId1]=useState('');
+  const [upiId2,setUpiId2]=useState('');
+
+
   useEffect(()=>{
     const fetchUser=async ()=>{
       try{
-        const response=await axios.get(`https://e-commerce-backend-pearl.vercel.app/profile/${userId}`);
+        const response=await axios.get(`${process.env.REACT_APP_LOCAL_URL}profile/${userId}`);
         setUser(response.data.user);
       }catch(err){
         console.log(err);
@@ -18,6 +30,20 @@ const ProfileComponent = (props) => {
     }
     fetchUser();
   },[]);
+
+  const updateFunction=async ()=>{
+    try{
+      await axios.put(`${process.env.REACT_APP_LOCAL_URL}profile/edit/${userId}`,{
+        username,email,phoneNo,address1,address2,upiId1,upiId2
+      });
+      toast.success('Profile Updated',{
+        position:toast.POSITION.TOP_RIGHT
+      })
+      window.location.reload();
+    }catch(err){
+      console.log(err);
+    }
+  }
 
   return (
     <div className={styles.profileDetailSection}>
@@ -30,11 +56,11 @@ const ProfileComponent = (props) => {
           props.toedit
           ?
           <div>
-            <h4><span>Name</span><input autoFocus></input></h4>
+            <h4><span>Name</span><input autoFocus value={username} onChange={(e)=>setUsername(e.target.value)}></input></h4>
             <hr />
-            <h4><span>Email</span><input></input></h4>
+            <h4><span>Email</span><input value={email} onChange={(e)=>setEmail(e.target.value)}></input></h4>
             <hr />
-            <h4><span>Mobile</span><input></input></h4>
+            <h4><span>Mobile</span><input value={phoneNo} onChange={(e)=>setPhoneNo(e.target.value)}></input></h4>
             <hr />
           </div>
           :
@@ -61,17 +87,11 @@ const ProfileComponent = (props) => {
         <div>
           <h2>Address #1</h2>
           <div id={styles.inputAddress}>
-            <input></input>
-            <input></input>
-            <input></input>
-            <input></input>
+            <input value={address1} onChange={(e)=>setAddress1(e.target.value)}></input>
           </div>
           <h2>Address #2</h2>
           <div id={styles.inputAddress}>
-            <input></input>
-            <input></input>
-            <input></input>
-            <input></input>
+            <input value={address2} onChange={(e)=>setAddress2(e.target.value)}></input>
           </div>
         </div>
         :
@@ -117,8 +137,8 @@ const ProfileComponent = (props) => {
         props.toedit
         ?
         <div>
-          <h3>UPI ID #1  <input></input></h3>
-          <h3>UPI ID #2  <input></input></h3>
+          <h3>UPI ID #1  <input value={upiId1} onChange={(e)=>setUpiId1(e.target.value)}></input></h3>
+          <h3>UPI ID #2  <input value={upiId2} onChange={(e)=>setUpiId2(e.target.value)}></input ></h3>
         </div>
         :
         <div>
@@ -130,10 +150,11 @@ const ProfileComponent = (props) => {
     {
       props.toedit?
       <div className={styles.updateBtn}>
-        <button>Update</button>
+        <button onClick={updateFunction}>Update</button>
       </div>
       :""
     }
+    <ToastContainer/>
   </div>
   )
 }

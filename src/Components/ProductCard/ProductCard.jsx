@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './ProductCard.module.css';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 
 function ProductCard(props) {
   const navigate=useNavigate();

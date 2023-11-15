@@ -7,6 +7,12 @@ import poster2 from "../../images/girl.png";
 import poster1 from "../../images/naruto.png";
 import axios from "axios";
 
+import { useDispatch} from 'react-redux';
+import { LoginAction} from '../../ReduxContainer/ActionCreator';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const SignupPage = () => {
   const [signIn, setSignIn] = useState(false);
   const [username, setUsername] = useState("");
@@ -14,23 +20,27 @@ const SignupPage = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
 
+  const dispatch=useDispatch();
+
   const [_, setCookie] = useCookies(["access_token"]);
   const naviagte = useNavigate();
 
   const loginFunction =async (e) => {
     e.preventDefault();
     try {
-      const response =await axios.post("https://e-commerce-backend-pearl.vercel.app/auth/login", {
-        username: username,
-        password: password,
+      const response =await axios.post(`${process.env.REACT_APP_LOCAL_URL}auth/login`, {
+        username,password
       });
 
-      if (response === null) {
-        window.alert("Wrong credentials");
+      if (response.data.data === null) {
+        toast.error("Wrong credentials",{
+          position:toast.POSITION.TOP_RIGHT
+        })
       } else {
+        if(response)
         setCookie("access_token", response.data.token);
         window.localStorage.setItem("userId", response.data.userId);
-
+        dispatch(LoginAction());
         naviagte("/");
       }
     } catch (err) {
@@ -40,16 +50,31 @@ const SignupPage = () => {
 
   const registerFunction =async (e) => {
     e.preventDefault();
+    console.log(password);
     try {
       if (password !== confirmPassword) {
-        window.alert("Both passwords should match");
+        toast.error("Passwords do not match",{
+          position:toast.POSITION.TOP_RIGHT
+        })
       } else {
-        const response =await axios.post("https://e-commerce-backend-pearl.vercel.app/auth/register", {
-          username: username,
-          password: password,
-          email: email,
+        const response =await axios.post(`${process.env.REACT_APP_LOCAL_URL}auth/register`, {
+          username,password,email
         });
-        window.alert(response);
+
+        if(response.data.data===null){
+          toast.error("Please refresh and try again",{
+            position:toast.POSITION.TOP_RIGHT
+          })          
+        }else if(response.data.message==='Y'){
+          toast.success(response.data.data,{
+            position:toast.POSITION.TOP_RIGHT
+          })          
+        }else if(response.data.message==='N'){
+          toast.error(response.data.data,{
+            position:toast.POSITION.TOP_RIGHT
+          })
+        }
+
       }
     } catch (err) {
       console.log(err);
@@ -163,6 +188,7 @@ const SignupPage = () => {
         </div>
 
       </div>
+      <ToastContainer/>
     </div>
   );
 };

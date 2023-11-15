@@ -9,7 +9,7 @@ import profile from '../../images/profile-user.png';
 import leftArrow from '../../images/left-arrow.png';
 import rightArrow from '../../images/right-arrow.png';
 
-import { Link,useNavigate } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { useDispatch, useSelector } from 'react-redux';
 import { LoginAction, LogoutAction } from '../../ReduxContainer/ActionCreator';
@@ -17,20 +17,19 @@ import { LoginAction, LogoutAction } from '../../ReduxContainer/ActionCreator';
 const Sidebar = () => {
     const {price,setPrice,setGender,
         setAge,setBrand,setSeason}=useContext(FilterContext);
+        
     const isLoggedIn=useSelector(state=>state.loggedIn);
     const dispatch=useDispatch();
 
-    const navigate=useNavigate();
-    const [cookie,setCookie]=useCookies(["access_token"]);
+    const [cookie,_]=useCookies(["access_token"]);
     const [arrowImg,setArrowImg]=useState(rightArrow);
     const [slideCls,setSlideCls]=useState(styles.minFilter)
-    const [width,setWidth]=useState(window.screen.width);
 
-    useEffect(()=>{
-        if(cookie.access_token!==null){
-            dispatch(LoginAction());
-        }
-    },[]);
+    // useEffect(()=>{
+    //     if(cookie.access_token!==null){
+    //         dispatch(LoginAction());
+    //     }
+    // },[]);
 
 
     const logoutActionFunction=(e)=>{

@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useContext } from 'react'
+import React, { useEffect, useState,useContext} from 'react'
 import styles from './Home.module.css';
 import axios from 'axios';
 import ProductCard from '../ProductCard/ProductCard';
@@ -16,7 +16,7 @@ import fmale4 from '../../images/femaleModel/fmodel6.avif';
 import fmale5 from '../../images/femaleModel/fmodel2.avif';
 
 
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 const Home = () => {
   const [arrM,setArrM]=useState([]);
@@ -24,16 +24,16 @@ const Home = () => {
   const [products,setProducts]=useState([]);
 
   const {gender,age,price,brand,season}=useContext(FilterContext);
-  const isLoggedIn=useSelector(state=>state.loggedIn);
+  // const isLoggedIn=useSelector(state=>state.loggedIn);
 
 
   useEffect(()=>{
 
     const fetchProducts=async ()=>{
       try{
-        const response=await axios.get("https://e-commerce-backend-pearl.vercel.app/");
+        const response=await axios.get(`${process.env.REACT_APP_LOCAL_URL}`);
         setProducts(response?.data?.products);
-        console.log(response);
+        
       }catch(err){
         console.log(err);
       }
@@ -56,22 +56,24 @@ const Home = () => {
         {
           products?.map((e,key)=>{
             let ind=Math.floor(Math.random()*arrM.length)
-            return <ProductCard img={arrM[ind%(arrF.length)]} pro={e}/>
-            // return gender==="Men"
-            // ?    
-            // e.minAge<=age && 
-            // (e.productPrice>=0) && 
-            // (brand==='All' || e.brand===brand) &&
-            // (season==='All' || e.Season===season)?
-            // <ProductCard img={arrM[ind%(arrM.length)]} pro={e}/>
-            // :""
-            // :
-            // e.minAge<=age && 
-            // (e.productPrice>=0) && 
-            // (brand==='All' || e.brand===brand) &&
-            // (season==='All' || e.Season===season)?
-            // <ProductCard img={arrF[ind%(arrF.length)]} pro={e}/>
-            // :""
+            // return <ProductCard img={arrM[ind%(arrF.length)]} pro={e}/>
+            return gender==="Men"
+            ?    
+            e.minAge<=age && 
+            (e.productPrice<=price) && 
+            (brand==='All' || e.brand===brand) &&
+            (season==='All' || e.Season===season)
+              ?
+              <ProductCard key={key} img={arrM[ind%(arrM.length)]} pro={e}/>
+              :""
+            :
+            e.minAge<=age && 
+            (e.productPrice<=price) && 
+            (brand==='All' || e.brand===brand) &&
+            (season==='All' || e.Season===season)
+              ?
+              <ProductCard key={key} img={arrF[ind%(arrF.length)]} pro={e}/>
+              :""
           })
 
         }

@@ -51,6 +51,9 @@ img{box-shadow: none;}
     width:20px;height:20px;
     opacity: 0.8;
 }
+.del_btn img:hover{
+    cursor: pointer;
+}
 
 .show_detail_btn button{
     border:none;
